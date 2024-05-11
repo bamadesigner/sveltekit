@@ -446,7 +446,7 @@ async function kit({ svelte_config }) {
 				// for internal use only. it's published as $app/paths externally
 				// we use this alias so that we won't collide with user aliases
 				case sveltekit_paths: {
-					const { assets, base } = svelte_config.kit.paths;
+					const { assets, base, exclude } = svelte_config.kit.paths;
 
 					// use the values defined in `global`, but fall back to hard-coded values
 					// for the sake of things like Vitest which may import this module
@@ -455,25 +455,29 @@ async function kit({ svelte_config }) {
 						return dedent`
 							export const base = ${global}?.base ?? ${s(base)};
 							export const assets = ${global}?.assets ?? ${assets ? s(assets) : 'base'};
+							export const exclude = ${global}?.exclude ?? ${s(exclude)};
 						`;
 					}
 
 					return dedent`
 						export let base = ${s(base)};
 						export let assets = ${assets ? s(assets) : 'base'};
+						export let exclude = ${s(exclude)};
 
 						export const relative = ${svelte_config.kit.paths.relative};
 
-						const initial = { base, assets };
+						const initial = { base, assets, exclude };
 
 						export function override(paths) {
 							base = paths.base;
 							assets = paths.assets;
+							exclude = paths.exclude;
 						}
 
 						export function reset() {
 							base = initial.base;
 							assets = initial.assets;
+							exclude = initial.exclude;
 						}
 
 						/** @param {string} path */

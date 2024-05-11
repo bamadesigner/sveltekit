@@ -509,6 +509,12 @@ export interface KitConfig {
 		 */
 		base?: '' | `/${string}`;
 		/**
+		 * A root-relative path that must start, but not end with `/` (e.g. `/exclude-path`), unless it is the empty string.
+		 * This specifies a path that should be excluded from the build.
+		 * @default ""
+		 */
+		exclude?: '' | `/${string}`;
+		/**
 		 * Whether to use relative asset paths.
 		 *
 		 * If `true`, `base` and `assets` imported from `$app/paths` will be replaced with relative asset paths during server-side rendering, resulting in more portable HTML.

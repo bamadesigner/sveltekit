@@ -53,7 +53,16 @@ export function create_fetch({ event, options, manifest, state, get_cookie_heade
 					request.headers.delete('origin');
 				}
 
-				if (url.origin !== event.url.origin) {
+				const same_origin = url.origin === event.url.origin;
+				const starts_with_base = !paths.base || url.pathname.startsWith(paths.base);
+				const starts_with_excluded = !paths.exclude || url.pathname.startsWith(paths.exclude);
+
+				// If the request meets one of the following criteria, we (maybe)
+				// forward the cookies and use the server's fetch to make the request:
+				//   1. The request is not same-origin
+				//   2. The request does not start with the base path
+				//   3. The request starts with the excluded path
+				if (!same_origin || !starts_with_base || starts_with_excluded) {				
 					// Allow cookie passthrough for "credentials: same-origin" and "credentials: include"
 					// if SvelteKit is serving my.domain.com:
 					// -        domain.com WILL NOT receive cookies
