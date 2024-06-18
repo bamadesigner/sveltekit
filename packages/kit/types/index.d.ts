@@ -491,11 +491,11 @@ declare module '@sveltejs/kit' {
 			 */
 			base?: '' | `/${string}`;
 			/**
-			 * A root-relative path that must start, but not end with `/` (e.g. `/exclude-path`), unless it is the empty string.
-			 * This specifies a path that should be excluded from the build.
-			 * @default ""
+			 * A root-relative path that must start, but not end with `/` (e.g. `/exclude-path`), unless it is the root string: '/'.
+			 * This specifies a path that should be excluded from the internal fetch.
+			 * @default []
 			 */
-			exclude?: '' | `/${string}`;
+			exclude?: Array<`/${string}`>;
 			/**
 			 * Whether to use relative asset paths.
 			 *

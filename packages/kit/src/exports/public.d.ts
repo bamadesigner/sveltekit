@@ -511,9 +511,9 @@ export interface KitConfig {
 		/**
 		 * A root-relative path that must start, but not end with `/` (e.g. `/exclude-path`), unless it is the empty string.
 		 * This specifies a path that should be excluded from the build.
-		 * @default ""
+     	 * @default []
 		 */
-		exclude?: '' | `/${string}`;
+    	exclude?: Array<`/${string}`>;
 		/**
 		 * Whether to use relative asset paths.
 		 *

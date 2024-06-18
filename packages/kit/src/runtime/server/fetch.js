@@ -55,14 +55,14 @@ export function create_fetch({ event, options, manifest, state, get_cookie_heade
 
 				const same_origin = url.origin === event.url.origin;
 				const starts_with_base = !paths.base || url.pathname.startsWith(paths.base);
-				const starts_with_excluded = !paths.exclude || url.pathname.startsWith(paths.exclude);
+				const starts_with_excluded = is_path_excluded(url.pathname, paths.exclude);
 
 				// If the request meets one of the following criteria, we (maybe)
 				// forward the cookies and use the server's fetch to make the request:
 				//   1. The request is not same-origin
 				//   2. The request does not start with the base path
-				//   3. The request starts with the excluded path
-				if (!same_origin || !starts_with_base || starts_with_excluded) {				
+				//   3. The request equals or starts with an excluded path
+				if (!same_origin || !starts_with_base || starts_with_excluded) {
 					// Allow cookie passthrough for "credentials: same-origin" and "credentials: include"
 					// if SvelteKit is serving my.domain.com:
 					// -        domain.com WILL NOT receive cookies
@@ -169,6 +169,21 @@ export function create_fetch({ event, options, manifest, state, get_cookie_heade
 		response.catch(() => {});
 		return response;
 	};
+}
+
+/**
+ * @param {string} pathname
+ * @param {Array<string>} exclude
+ */
+function is_path_excluded(pathname, exclude) {
+	if (exclude && exclude.length) {
+		for (let i = 0; i < exclude.length; i++) {
+			if (pathname === exclude[i] || pathname.startsWith(exclude[i])) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 /**
