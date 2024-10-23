@@ -1,5 +1,6 @@
 import colors from 'kleur';
 import fs from 'node:fs';
+import process from 'node:process';
 import prompts from 'prompts';
 import semver from 'semver';
 import glob from 'tiny-glob/sync.js';
@@ -60,7 +61,7 @@ export async function migrate() {
 			colors
 				.bold()
 				.yellow(
-					'\nSvelteKit 2 requires Svelte 4 or newer. We recommend running the `svelte-4` migration first (`npx svelte-migrate svelte-4`).\n'
+					'\nSvelteKit 2 requires Svelte 4 or newer. We recommend running the `svelte-4` migration first (`npx sv migrate svelte-4`).\n'
 				)
 		);
 		const response = await prompts({
@@ -150,8 +151,8 @@ export async function migrate() {
 	const tasks = [
 		'Run npm install (or the corresponding installation command of your package manager)',
 		use_git && cyan('git commit -m "migration to SvelteKit 2"'),
-		'Review the migration guide at https://kit.svelte.dev/docs/migrating-to-sveltekit-2',
-		'Read the updated docs at https://kit.svelte.dev/docs'
+		'Review the migration guide at https://svelte.dev/docs/kit/migrating-to-sveltekit-2',
+		'Read the updated docs at https://svelte.dev/docs/kit'
 	].filter(Boolean);
 
 	tasks.forEach((task, i) => {

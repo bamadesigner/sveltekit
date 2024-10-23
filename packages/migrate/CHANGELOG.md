@@ -1,5 +1,92 @@
 # svelte-migrate
 
+## 1.6.5
+### Patch Changes
+
+
+- docs: demonstrate sv migrate over prior commands ([#12840](https://github.com/sveltejs/kit/pull/12840))
+
+
+- fix: bump enhanced-img version to avoid peer dep warning ([#12852](https://github.com/sveltejs/kit/pull/12852))
+
+## 1.6.4
+### Patch Changes
+
+
+- fix: migrate `svelte` and `vite-plugin-svelte` to latest ([#12838](https://github.com/sveltejs/kit/pull/12838))
+
+## 1.6.3
+### Patch Changes
+
+
+- chore: add `svelte-eslint-parser` to list of migratable dependencies ([#12828](https://github.com/sveltejs/kit/pull/12828))
+
+## 1.6.2
+### Patch Changes
+
+
+- chore: upgrade to ts-morph 24 ([#12781](https://github.com/sveltejs/kit/pull/12781))
+
+## 1.6.1
+### Patch Changes
+
+
+- chore: upgrade to ts-morph 23 ([#12607](https://github.com/sveltejs/kit/pull/12607))
+
+## 1.6.0
+### Minor Changes
+
+
+- feat: pass filename to `migrate` to allow for `svelte:self` migration ([#12749](https://github.com/sveltejs/kit/pull/12749))
+
+
+### Patch Changes
+
+
+- fix: prompt SvelteKit 2 migration during Svelte 5 migration if necessary ([#12748](https://github.com/sveltejs/kit/pull/12748))
+
+## 1.5.1
+### Patch Changes
+
+
+- fix: use `next` versions for `svelte` and `vite-plugin-svelte` ([#12729](https://github.com/sveltejs/kit/pull/12729))
+
+## 1.5.0
+### Minor Changes
+
+
+- feat: add Svelte 5 migration ([#12519](https://github.com/sveltejs/kit/pull/12519))
+
+## 1.4.5
+### Patch Changes
+
+
+- chore: configure provenance in a simpler manner ([#12570](https://github.com/sveltejs/kit/pull/12570))
+
+## 1.4.4
+### Patch Changes
+
+
+- chore: package provenance ([#12567](https://github.com/sveltejs/kit/pull/12567))
+
+## 1.4.3
+
+### Patch Changes
+
+- chore: add keywords for discovery in npm search ([#12330](https://github.com/sveltejs/kit/pull/12330))
+
+## 1.4.2
+
+### Patch Changes
+
+- fix: bump import-meta-resolve to remove deprecation warnings ([#12240](https://github.com/sveltejs/kit/pull/12240))
+
+## 1.4.1
+
+### Patch Changes
+
+- fix: continue traversing the children of non-self-closing elements ([#12175](https://github.com/sveltejs/kit/pull/12175))
+
 ## 1.4.0
 
 ### Minor Changes
